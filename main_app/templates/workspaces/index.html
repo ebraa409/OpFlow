@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% for workspace in workspaces %}
+
+  <div>
+    <span>{{workspace.name}}</span>
+    <p>{{ workspace.description }}</p>
+  </div>
+
+{% endfor %}
+{% endblock %}

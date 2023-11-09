@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UpdateUserForm, UpdateProfileForm
 from .models import Workspace
+from django.views.generic.edit import CreateView
 # Create your views here.
 
 
@@ -24,6 +25,26 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+
+
+class WorkspaceCreate(CreateView):
+  model = Workspace
+  fields = ['name', 'description']
+  success_url = '/workspaces/'
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -49,7 +70,7 @@ def profile(request):
 
 
 
-def workspace_index(request):
-  workspace = Workspace.objects.all()
-  return render(request, 'workspace/index.html', {'workspace': workspace})
+def workspaces_index(request):
+  workspaces = Workspace.objects.all()
+  return render(request, 'workspaces/index.html', {'workspaces': workspaces})
 
