@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UpdateUserForm, UpdateProfileForm
 from .models import Workspace
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Create your views here.
 
 
@@ -34,9 +34,14 @@ class WorkspaceCreate(CreateView):
   success_url = '/workspaces/'
 
 
+class WorkspaceUpdate(UpdateView):
+  model = Workspace
+  fields = ['name', 'description']
 
 
-
+class WorkspaceDelete(DeleteView):
+  model = Workspace
+  success_url = '/workspaces/'
 
 
 
@@ -73,4 +78,8 @@ def profile(request):
 def workspaces_index(request):
   workspaces = Workspace.objects.all()
   return render(request, 'workspaces/index.html', {'workspaces': workspaces})
+
+def workspaces_detail(request, workspace_id):
+  workspace = Workspace.objects.get(id =workspace_id)
+  return render(request, 'workspaces/detail.html', {'workspace': workspace})
 

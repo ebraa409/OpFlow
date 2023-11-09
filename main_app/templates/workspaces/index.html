@@ -3,12 +3,15 @@
 
 {% block content %}
 
-{% for workspace in workspaces %}
+<div>
+</div>
 
+{% for workspace in workspaces %}
+<a href="{% url 'detail' workspace.id %}">
   <div>
-    <span>{{workspace.name}}</span>
+    <span>{{ workspace.name }}</span>
     <p>{{ workspace.description }}</p>
   </div>
-
+</a>
 {% endfor %}
 {% endblock %}
