@@ -9,3 +9,10 @@ class Profile(models.Model):
   image = models.ImageField(upload_to = 'main_app/static/uploads', default='')
   def __str__(self):
     return self.user.username
+
+
+class Workspace(models.Model):
+  name = models.CharField(max_length=50)
+  description = models.TextField(max_length=300)
+
+

@@ -4,6 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UpdateUserForm, UpdateProfileForm
+from .models import Workspace
 # Create your views here.
 
 
@@ -45,3 +46,10 @@ def profile(request):
     profile_form = UpdateProfileForm(instance=request.user.profile)
 
   return render(request, 'users/profile.html', {'user_form': user_form, 'profile_form': profile_form})
+
+
+
+def workspace_index(request):
+  workspace = Workspace.objects.all()
+  return render(request, 'workspace/index.html', {'workspace': workspace})
+
