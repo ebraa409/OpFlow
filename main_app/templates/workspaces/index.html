@@ -7,11 +7,11 @@
 </div>
 
 {% for workspace in workspaces %}
-<a href="{% url 'detail' workspace.id %}">
-  <div>
+<div>
+    <a href="{% url 'detail' workspace.id %}">
     <span>{{ workspace.name }}</span>
+    </a>
     <p>{{ workspace.description }}</p>
   </div>
-</a>
 {% endfor %}
 {% endblock %}

@@ -3,7 +3,12 @@
 
 {% block content %}
 
-<form action="" method="POST">
+{% if object %}
+<h1>Edit {{object.name }}</h1>
+{% else %}
+<h1>Add a Workspace</h1>
+{% endif %}
+<form action="" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <table>
   {{form.as_table}}

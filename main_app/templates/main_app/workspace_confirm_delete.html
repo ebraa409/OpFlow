@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+
+<h1>Delete {{ workspace.name }}?</h1>
+
+<form action="" method="POST">
+{% csrf_token %}
+  <input type="submit" value="Yes - Delete!">
+  <a href="{% url 'detail' workspace.id %}">Cancel</a>
+</form>
+
+{% endblock %}

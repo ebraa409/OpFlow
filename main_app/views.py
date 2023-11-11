@@ -39,6 +39,7 @@ class WorkspaceUpdate(UpdateView):
   fields = ['name', 'description']
 
 
+
 class WorkspaceDelete(DeleteView):
   model = Workspace
   success_url = '/workspaces/'
