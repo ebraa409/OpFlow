@@ -4,8 +4,10 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UpdateUserForm, UpdateProfileForm
-from .models import Workspace
+from .models import Workspace, Task
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView, ListView
+
 # Create your views here.
 
 
@@ -83,4 +85,27 @@ def workspaces_index(request):
 def workspaces_detail(request, workspace_id):
   workspace = Workspace.objects.get(id =workspace_id)
   return render(request, 'workspaces/detail.html', {'workspace': workspace})
+
+
+class TaskList(ListView):
+  model = Task
+
+class TaskDetail(DetailView):
+  model = Task
+
+class TaskCreate(CreateView):
+  model = Task
+  fields = ['name', 'description', 'duedate', 'status' ]
+  success_url = '/tasks/'
+
+  
+
+class TaskUpdate(UpdateView):
+  model = Task
+  fields = ['name', 'description', 'duedate', 'status' ]
+
+class TaskDelete(DeleteView):
+  model = Task
+  success_url = '/tasks/'
+
 

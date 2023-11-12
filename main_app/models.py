@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import auth, User
 from django.urls import reverse
+from django.utils.timezone import timezone
 # Create your models here.
 
 STATUS = (
@@ -29,11 +30,16 @@ class Workspace(models.Model):
 
 
 class Task(models.Model):
+  workspace = models.ForeignKey(Workspace, on_delete=models.CASCADE,default=1)
   name = models.CharField(max_length=50)
   description = models.TextField(max_length=300)
-  due_date = models.DateField()
+  duedate = models.DateField()
   status = models.CharField(max_length=100, choices=STATUS, default=STATUS[0][0])
-  workspace = models.ForeignKey(Workspace, on_delete=models.CASCADE)
+
+
 
   def __str__(self):
-    return f'{self.workspace.name} - {self.get_status_display()} on {self.date}'
+    return f'{self.name}'
+
+  def get_absolute_url(self):
+    return reverse('tasks_detail')
