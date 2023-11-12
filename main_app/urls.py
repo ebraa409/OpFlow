@@ -26,4 +26,8 @@ urlpatterns = [
   path('tasks/<int:pk>/delete/', views.TaskDelete.as_view(), name='tasks_delete'),
   path('tasks/', views.TaskList.as_view(), name='tasks_index'),
   path('tasks/<int:pk>/', views.TaskDetail.as_view(), name='tasks_detail'), 
+  ## Assoc:
+  path('workspaces/<int:workspace_id>/assoc_task/<int:task_id>/', views.assoc_task, name='assoc_task'),
+  path('workspaces/<int:workspace_id>/unassoc_task/<int:task_id>/', views.unassoc_task, name='unassoc_task'),
+
 ]

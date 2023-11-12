@@ -5,7 +5,7 @@
 {% for task in task_list %}
 <a href="{% url 'tasks_detail' task.id %}">
   <div>
-    <h4>{{object.name}}</h4>
+    <h4>{{task.name}}</h4>
   </div>
 </a>
 {% endfor %}

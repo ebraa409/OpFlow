@@ -10,8 +10,26 @@
     <a href="{% url 'workspaces_update' workspace.id %}">Edit Workspace</a>
     <a href="{% url 'workspaces_delete' workspace.id %}">Delete Workspace</a>
   </div>
+<div>
+
+<hr>
+
+<div class="row">
+  <div class="col s6">
+    <h3> {{ workspace.name }}'s Tasks</h3>
+
+{% if workspace.tasks.count %}
+{% for task in workspace.tasks.all %}
+  <div class="card">
+    <span class="card-title">
+      {{ task.name }}
+    </span>
+  </div>
+  </div>
+    {% endfor %}
+    {% else %}
+    <h5>No Tasks</h5>
+    {% endif %}
 
 
-
-  
 {% endblock %}

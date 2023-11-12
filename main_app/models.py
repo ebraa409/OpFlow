@@ -21,25 +21,25 @@ class Profile(models.Model):
     return self.user.username
 
 
-class Workspace(models.Model):
-  name = models.CharField(max_length=50)
-  description = models.TextField(max_length=300)
-
-  def get_absolute_url(self):
-    return reverse('detail', kwargs={'workspace_id': self.id})
-
-
 class Task(models.Model):
-  workspace = models.ForeignKey(Workspace, on_delete=models.CASCADE,default=1)
   name = models.CharField(max_length=50)
   description = models.TextField(max_length=300)
   duedate = models.DateField()
   status = models.CharField(max_length=100, choices=STATUS, default=STATUS[0][0])
 
 
-
   def __str__(self):
     return f'{self.name}'
 
   def get_absolute_url(self):
-    return reverse('tasks_detail')
+    return reverse('tasks_detail', kwargs={'pk': self.id})
+
+class Workspace(models.Model):
+  name = models.CharField(max_length=50)
+  description = models.TextField(max_length=300)
+  tasks = models.ManyToManyField(Task)
+
+  def get_absolute_url(self):
+    return reverse('detail', kwargs={'workspace_id': self.id})
+
+

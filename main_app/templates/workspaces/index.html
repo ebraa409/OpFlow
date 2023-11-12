@@ -11,7 +11,7 @@
     <a href="{% url 'detail' workspace.id %}">
     <span>{{ workspace.name }}</span>
     </a>
-    <p>{{ workspace.description }}</p>
+    <p>Description: {{ workspace.description }}</p>
   </div>
 {% endfor %}
 {% endblock %}
