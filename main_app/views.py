@@ -7,6 +7,8 @@ from .forms import UpdateUserForm, UpdateProfileForm
 from .models import Workspace, Task
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView, ListView
+from .forms import TaskForm
+
 
 # Create your views here.
 
@@ -84,7 +86,25 @@ def workspaces_index(request):
 
 def workspaces_detail(request, workspace_id):
   workspace = Workspace.objects.get(id =workspace_id)
-  return render(request, 'workspaces/detail.html', {'workspace': workspace})
+  task_form = TaskForm()
+  return render(request, 'workspaces/detail.html', {'workspace': workspace, 'task_form':task_form})
+
+
+
+
+
+
+# def cats_detail(request, cat_id):
+#   #Select * FROM 'main_app_cat' WHERE id = cat_id
+#   cat = Cat.objects.get(id=cat_id)
+#   feeding_form = FeedingForm()
+#   ## Exclude those ids which exist in cat_toys join table with the current cat id
+#   toys_cats_doesnt_have = Toy.objects.exclude(id__in = cat.toys.all().values_list('id'))
+#   return render(request, 'cats/detail.html', {'cat': cat, 'feeding_form': feeding_form, 'toys':toys_cats_doesnt_have})
+
+
+
+
 
 
 class TaskList(ListView):
@@ -97,7 +117,20 @@ class TaskDetail(DetailView):
 class TaskCreate(CreateView):
   model = Task
   fields = ['name', 'description', 'duedate', 'status' ]
-  
+
+
+  def add_task(request, workspace_id):
+    form = TaskCreate(request.POST)
+    if form.is_valid():
+      new_task = form.save(commit = False)
+      new_task.workspace_id = workspace_id
+      new_task.save()
+    return redirect('', workspace_id = workspace_id)
+
+  # def form_valid(self, form):
+  #   workspace_id = self.kwargs['workspace_id']
+  #   form.instance.workspace = Workspace.objects.get(id=self.kwargs['workspace_id'])
+  #   return super().form_valid(form)
 
 class TaskUpdate(UpdateView):
   model = Task
@@ -114,5 +147,5 @@ def assoc_task(request, workspace_id, task_id):
 
   
 def unassoc_task(request, workspace_id, task_id):
-  Workspace.objects.get(id=workspace_id).tasks.add(task_id)
+  Workspace.objects.get(id=workspace_id).tasks.remove(task_id)
   return redirect('detail', workspace_id=workspace_id)

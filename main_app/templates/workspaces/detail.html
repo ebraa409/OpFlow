@@ -14,24 +14,28 @@
 
 <hr>
 
-<div class="row">
-  <div class="col s6">
-    <h3>{{ workspace.name }}'s Tasks</h3>
+<div>
+  <div>
+      <h3> {{ workspace.name }}'s Tasks</h3>
 
-    {% if workspace.tasks.count %}
-      {% for task in workspace.tasks.all %}
-        <div>
-          <span>
-            {{ task.name }} - {{ task.description }} - {{ task.duedate }} - {{ task.status }}
-          </span>
-        </div>
-      {% endfor %}
-    {% else %}
-      <h5>No Tasks</h5>
-    {% endif %}
+      {% if tasks %}
+          {% for task in tasks %}
+              <div>
+                  <span>
+                      {{ task.name }} - {{ task.description }} - {{ task.duedate }} - {{ task.status }}
+                  </span>
+              </div>
+          {% endfor %}
+      {% else %}
+          <h5>No Tasks</h5>
+      {% endif %}
   </div>
 </div>
 
+<div>
+  <a href="{% url 'tasks_create' workspace.id %}">Add Task</a>
+
+</div>
 
 
 
