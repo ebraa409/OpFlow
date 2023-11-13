@@ -16,20 +16,23 @@
 
 <div class="row">
   <div class="col s6">
-    <h3> {{ workspace.name }}'s Tasks</h3>
+    <h3>{{ workspace.name }}'s Tasks</h3>
 
-{% if workspace.tasks.count %}
-{% for task in workspace.tasks.all %}
-  <div class="card">
-    <span class="card-title">
-      {{ task.name }}
-    </span>
-  </div>
-  </div>
-    {% endfor %}
+    {% if workspace.tasks.count %}
+      {% for task in workspace.tasks.all %}
+        <div>
+          <span>
+            {{ task.name }} - {{ task.description }} - {{ task.duedate }} - {{ task.status }}
+          </span>
+        </div>
+      {% endfor %}
     {% else %}
-    <h5>No Tasks</h5>
+      <h5>No Tasks</h5>
     {% endif %}
+  </div>
+</div>
+
+
 
 
 {% endblock %}

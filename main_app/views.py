@@ -97,6 +97,7 @@ class TaskDetail(DetailView):
 class TaskCreate(CreateView):
   model = Task
   fields = ['name', 'description', 'duedate', 'status' ]
+  
 
 class TaskUpdate(UpdateView):
   model = Task
@@ -111,6 +112,7 @@ def assoc_task(request, workspace_id, task_id):
   Workspace.objects.get(id=workspace_id).tasks.add(task_id)
   return redirect('detail', workspace_id=workspace_id)
 
+  
 def unassoc_task(request, workspace_id, task_id):
   Workspace.objects.get(id=workspace_id).tasks.add(task_id)
   return redirect('detail', workspace_id=workspace_id)

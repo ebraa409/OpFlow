@@ -26,7 +26,7 @@ class Task(models.Model):
   description = models.TextField(max_length=300)
   duedate = models.DateField()
   status = models.CharField(max_length=100, choices=STATUS, default=STATUS[0][0])
-
+  
 
   def __str__(self):
     return f'{self.name}'
