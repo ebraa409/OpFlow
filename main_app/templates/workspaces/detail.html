@@ -10,33 +10,39 @@
     <a href="{% url 'workspaces_update' workspace.id %}">Edit Workspace</a>
     <a href="{% url 'workspaces_delete' workspace.id %}">Delete Workspace</a>
   </div>
-<div>
+
 
 <hr>
 
-<div>
-  <div>
-      <h3> {{ workspace.name }}'s Tasks</h3>
 
-      {% if tasks %}
-          {% for task in tasks %}
-              <div>
-                  <span>
-                      {{ task.name }} - {{ task.description }} - {{ task.duedate }} - {{ task.status }}
-                  </span>
-              </div>
-          {% endfor %}
-      {% else %}
-          <h5>No Tasks</h5>
-      {% endif %}
-  </div>
-</div>
 
-<div>
-  <a href="{% url 'tasks_create' workspace.id %}">Add Task</a>
+<table class="striped">
+  <thead>
+    <tr><th>task</th><th>description</th><th>duedate</th><th>status</th>
+  </thead>
+  <tbody>
+    {% for task in workspace.task_set.all %}
+      <tr>
+        <td>{{task.name}}</td>
+        <td>{{task.description}}</td>
+        <th>{{task.duedate}}</th>
+        <th>{{task.status}}</th>   
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
-</div>
 
+
+
+
+
+<form action="{% url 'add_tasks' workspace.id %}" method="POST">
+  {% csrf_token %}
+  <!-- Render the inputs -->
+  {{ task_form.as_p }}
+  <input type="submit" class="btn" value="Add Task">
+</form>
 
 
 {% endblock %}

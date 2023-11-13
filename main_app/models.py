@@ -25,6 +25,11 @@ class Workspace(models.Model):
   name = models.CharField(max_length=50)
   description = models.TextField(max_length=300)
   # tasks = models.ManyToManyField(Task)
+  def __str__(self):
+        return f'{self.name} ({self.id})'
+    
+  def get_absolute_url(self):
+        return reverse('detail', kwargs={'wordspace_id': self.id})
 
 
 class Task(models.Model):

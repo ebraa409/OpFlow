@@ -19,7 +19,8 @@ urlpatterns = [
   path('workspaces/create', views.WorkspaceCreate.as_view(), name='workspaces_create'),
   path('workspaces/<int:pk>/update/', views.WorkspaceUpdate.as_view(), name='workspaces_update'),
   path('workspaces/<int:pk>/delete/', views.WorkspaceDelete.as_view(), name='workspaces_delete'),
-  path('workspaces/<int:workspace_id>/add_tasks/', views.TaskCreate.as_view(), name='tasks_create'),
+  # path('workspaces/<int:workspace_id>/add_tasks/', views.TaskCreate.as_view(), name='tasks_create'),
+  path('workspaces/<int:workspace_id>/add_tasks/', views.add_tasks, name='add_tasks'),
 
 
   ## Tasks CRUDS

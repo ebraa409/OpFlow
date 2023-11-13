@@ -114,18 +114,20 @@ class TaskDetail(DetailView):
   model = Task
   
 
-class TaskCreate(CreateView):
-  model = Task
-  fields = ['name', 'description', 'duedate', 'status' ]
+# class TaskCreate(CreateView):
+#   model = Task
+#   fields = ['name', 'description', 'duedate', 'status' ]
 
 
-  def add_task(request, workspace_id):
-    form = TaskCreate(request.POST)
-    if form.is_valid():
-      new_task = form.save(commit = False)
-      new_task.workspace_id = workspace_id
-      new_task.save()
-    return redirect('', workspace_id = workspace_id)
+def add_tasks(request, workspace_id):
+  form = TaskForm(request.POST)
+  if form.is_valid():
+    add_tasks = form.save(commit=False)
+    add_tasks.workspace_id = workspace_id
+    add_tasks.save()
+  return redirect('detail', workspace_id=workspace_id)
+
+
 
   # def form_valid(self, form):
   #   workspace_id = self.kwargs['workspace_id']
