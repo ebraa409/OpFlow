@@ -144,3 +144,10 @@ def unassoc_task(request, workspace_id, task_id):
 class CommentCreate(CreateView):
   model = Comment
   fields = ['text']
+  success_url = '/tasks/'
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    
+    return super().form_valid(form)
+

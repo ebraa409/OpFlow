@@ -54,7 +54,7 @@ class Task(models.Model):
 class Comment(models.Model):
     # task = models.ForeignKey(Task, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default="")
-    text = models.TextField(max_length=500)
+    text = models.TextField(max_length=499)
     posted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
