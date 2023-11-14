@@ -141,13 +141,14 @@ def unassoc_task(request, workspace_id, task_id):
   return redirect('detail', workspace_id=workspace_id)
 
 
-class CommentCreate(CreateView):
-  model = Comment
-  fields = ['text']
-  success_url = '/tasks/'
+# class CommentCreate(CreateView):
+#   model = Comment
+#   fields = ['text']
+#   success_url = '/tasks/'
 
-  def form_valid(self, form):
-    form.instance.user = self.request.user
-    
-    return super().form_valid(form)
+#   def form_valid(self, form):
+#     form.instance.user = self.request.user
+#     form.instance.task_id = self.request.POST.get('task')
 
+#     return super().form_valid(form)
+  
