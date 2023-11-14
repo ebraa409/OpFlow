@@ -30,11 +30,14 @@
   <h2>Comments:</h2>
   <div>
     {% for comment in task.comment_set.all %}
-      <p>{{ comment.text }}</p>
+      <p>{{ comment.text }}</p> <a href="{% url 'comments_update' comment.id %}">Edit Comment</a>
+      <a href="{% url 'comments_delete' comment.id %}">Delete Comment</a>
       <p>Posted at: {{ comment.posted_at }}</p>
       <p>By: {{ comment.user.username }}</p>
     {% endfor %}
   </div>
 </div>
+
+
 
 {% endblock %}

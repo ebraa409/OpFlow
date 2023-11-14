@@ -168,6 +168,14 @@ def unassoc_task(request, workspace_id, task_id):
   Workspace.objects.get(id=workspace_id).tasks.remove(task_id)
   return redirect('detail', workspace_id=workspace_id)
 
+class CommentUpdate(UpdateView):
+  model = Comment
+  fields = ['text']
+
+class CommentDelete(DeleteView):
+  model = Comment
+  fields = ['text']
+  success_url = '/tasks'
 
 # class CommentCreate(CreateView):
 #   model = Comment

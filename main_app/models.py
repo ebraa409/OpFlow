@@ -59,3 +59,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'{self.text} ({self.id})'
+    
+    def get_absolute_url(self):
+      return reverse('tasks_detail', kwargs={'pk': self.id})

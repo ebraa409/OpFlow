@@ -38,5 +38,7 @@ urlpatterns = [
   # path('comments/create', views.CommentCreate.as_view(), name='comments_create'),
   # path('tasks/<int:task_id>/add_comments/', views.add_comments, name='add_comments'),
   path('tasks/<int:task_id>/add_comment', views.add_comment, name='add_comment'),
+  path('comments/<int:pk>/update/', views.CommentUpdate.as_view(), name='comments_update'),
+  path('comments/<int:pk>/delete/', views.CommentDelete.as_view(), name='comments_delete'),
 
 ]
