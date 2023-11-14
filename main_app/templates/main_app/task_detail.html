@@ -2,10 +2,41 @@
 
 
 {% block content %}
-
-
-<h1>{{task.name}}</h1>
+<table>
+<thead>
+  <tr>
+    <th>task</th>
+    <th>description</th>
+    <th>duedate</th>
+    <th>status</th>
+    <th>Add New Comment</th>
+</thead>
+<tbody>
+    <tr>
+      <td>{{task.name}}</td> 
+      <td>{{task.description}}</td>
+      <th>{{task.duedate}}</th>
+      <th>{{task.status}}</th>   
+      <th><a href="{% url 'add_comment' task.id %}">Add Comment</a></p>
+      </th>
+    </tr>
+</tbody>
+</table>
 
 <a href="{% url 'tasks_update' task.id %}">Edit Task</a>
 <a href="{% url 'tasks_delete' task.id %}">Delete Task</a>
+
+<div>
+  <h2>Comments:</h2>
+  <div>
+    {% for comment in comments %}
+      <p>{{ comment.text }}</p>
+      <p>Posted at: {{ comment.posted_at }}</p>
+      <p>By: {{ comment.user.username }}</p>
+    {% endfor %}
+  </div>
+</div>
+
+
+
 {% endblock %}

@@ -4,10 +4,11 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UpdateUserForm, UpdateProfileForm
-from .models import Workspace, Task
+from .models import Workspace, Task, Comment
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView, ListView
 from .forms import TaskForm
+from .forms import CommentForm
 
 
 # Create your views here.
@@ -47,15 +48,6 @@ class WorkspaceUpdate(UpdateView):
 class WorkspaceDelete(DeleteView):
   model = Workspace
   success_url = '/workspaces/'
-
-
-
-
-
-
-
-
-
 
 
 def home(request):
@@ -103,15 +95,12 @@ def workspaces_detail(request, workspace_id):
 #   return render(request, 'cats/detail.html', {'cat': cat, 'feeding_form': feeding_form, 'toys':toys_cats_doesnt_have})
 
 
-
-
-
-
 class TaskList(ListView):
   model = Task
 
 class TaskDetail(DetailView):
   model = Task
+  
   
 
 # class TaskCreate(CreateView):
@@ -126,6 +115,26 @@ def add_tasks(request, workspace_id):
     add_tasks.workspace_id = workspace_id
     add_tasks.save()
   return redirect('detail', workspace_id=workspace_id)
+
+# def add_comments(request, task_id):
+#   form = TaskForm(request.POST)
+#   if form.is_valid():
+#     add_comments = form.save(commit=False)
+#     add_comments.task_id = task_id
+#     add_comments.save()
+#   return redirect('tasks_detail', task_id=task_id)
+
+
+def add_comment(request, task_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit = False)
+    new_comment.task_id = task_id
+    new_comment.save()
+  return redirect('tasks_detail', task_id = task_id)
+
+
+
 
 
 
@@ -151,3 +160,16 @@ def assoc_task(request, workspace_id, task_id):
 def unassoc_task(request, workspace_id, task_id):
   Workspace.objects.get(id=workspace_id).tasks.remove(task_id)
   return redirect('detail', workspace_id=workspace_id)
+
+
+# class CommentCreate(CreateView):
+#   model = Comment
+#   fields = ['text']
+#   success_url = '/tasks/'
+
+#   def form_valid(self, form):
+#     form.instance.user = self.request.user
+#     form.instance.task_id = self.request.POST.get('task')
+
+#     return super().form_valid(form)
+  

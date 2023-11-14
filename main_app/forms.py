@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Profile,Task
+from .models import Profile,Task, Comment
 from django.forms import ModelForm
 
 
@@ -30,11 +30,15 @@ class UpdateProfileForm(forms.ModelForm):
 
 
 class TaskForm(ModelForm):
-  class Meta: ##declare model that is being used
+  class Meta: 
     model = Task
     fields = ['name', 'description','duedate','status']
 
 
 
+class CommentForm(ModelForm):
+  class Meta: 
+    model = Comment
+    fields = ['text']
 
 

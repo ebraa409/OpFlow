@@ -52,9 +52,10 @@ class Task(models.Model):
 
 
 class Comment(models.Model):
-  user = models.ForeignKey(User, on_delete=models.CASCADE, default="")
-  text = models.TextField(max_length=499)
-  posted_at = models.DateTimeField(auto_now_add=True)
+    task = models.ForeignKey(Task, on_delete=models.CASCADE, default="")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default="")
+    text = models.TextField(max_length=499)
+    posted_at = models.DateTimeField(auto_now_add=True)
 
-  def __str__(self):
+    def __str__(self):
         return f'{self.text} ({self.id})'
