@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Profile,Task
+from .models import Profile,Task, Comment
 from django.forms import ModelForm
 
 
@@ -36,5 +36,9 @@ class TaskForm(ModelForm):
 
 
 
+class CommentForm(ModelForm):
+  class Meta: 
+    model = Comment
+    fields = ['text']
 
 

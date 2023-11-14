@@ -17,7 +17,7 @@
       <td>{{task.description}}</td>
       <th>{{task.duedate}}</th>
       <th>{{task.status}}</th>   
-      <th><a href="{% url 'comments_create' %}">Add Comment</a></p>
+      <th><a href="{% url 'add_comment' task.id %}">Add Comment</a></p>
       </th>
     </tr>
 </tbody>
@@ -29,7 +29,7 @@
 <div>
   <h2>Comments:</h2>
   <div>
-    {% for comment in comments %}
+    {% for comment in task.comment_set.all %}
       <p>{{ comment.text }}</p>
       <p>Posted at: {{ comment.posted_at }}</p>
       <p>By: {{ comment.user.username }}</p>

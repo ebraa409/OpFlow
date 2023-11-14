@@ -8,6 +8,7 @@ from .models import Workspace, Task, Comment
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView, ListView
 from .forms import TaskForm
+from .forms import CommentForm
 
 
 # Create your views here.
@@ -100,6 +101,7 @@ class TaskList(ListView):
 class TaskDetail(DetailView):
   model = Task
   
+  
 
 # class TaskCreate(CreateView):
 #   model = Task
@@ -113,6 +115,32 @@ def add_tasks(request, workspace_id):
     add_tasks.workspace_id = workspace_id
     add_tasks.save()
   return redirect('detail', workspace_id=workspace_id)
+
+# def add_comments(request, task_id):
+#   form = TaskForm(request.POST)
+#   if form.is_valid():
+#     add_comments = form.save(commit=False)
+#     add_comments.task_id = task_id
+#     add_comments.save()
+#   return redirect('tasks_detail', task_id=task_id)
+
+
+def add_comment(request, task_id):
+
+  form = CommentForm(request.POST)
+  if request.method == "POST":
+    if form.is_valid():
+      new_comment = form.save(commit = False)
+      new_comment.task_id = task_id
+      new_comment.user_id = request.user.id
+      new_comment.save()
+      return redirect('tasks_detail', pk = task_id)
+
+  form = CommentForm()
+  context = {'form': form }
+  return render(request, 'main_app/comment_form.html', context)
+
+
 
 
 

@@ -14,7 +14,7 @@ urlpatterns = [
   path('accounts/signup/', views.signup, name='signup'),
   path('profile/', profile, name='users-profile'),
   path('workspaces/', views.workspaces_index, name='index'),
-  path('workspaces/<int:workspace_id>', views.workspaces_detail, name='detail'),
+  path('workspaces/<int:workspace_id>/', views.workspaces_detail, name='detail'),
   ##Workspace CRUDS:
   path('workspaces/create', views.WorkspaceCreate.as_view(), name='workspaces_create'),
   path('workspaces/<int:pk>/update/', views.WorkspaceUpdate.as_view(), name='workspaces_update'),
@@ -35,5 +35,8 @@ urlpatterns = [
   
   path('workspaces/<int:workspace_id>/unassoc_task/<int:task_id>/', views.unassoc_task, name='unassoc_task'),
   ## Comment CUDS
-  path('comments/create', views.CommentCreate.as_view(), name='comments_create'),
+  # path('comments/create', views.CommentCreate.as_view(), name='comments_create'),
+  # path('tasks/<int:task_id>/add_comments/', views.add_comments, name='add_comments'),
+  path('tasks/<int:task_id>/add_comment', views.add_comment, name='add_comment'),
+
 ]
