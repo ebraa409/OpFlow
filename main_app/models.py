@@ -39,15 +39,6 @@ class Task(models.Model):
   status = models.CharField(max_length=100, choices=STATUS, default=STATUS[0][0])
   workspace = models.ForeignKey(Workspace, on_delete=models.CASCADE,default=1)
 
-
-
-
-
-
-
-
-  
-
   def __str__(self):
     return f'{self.name}'
 
@@ -60,3 +51,11 @@ class Task(models.Model):
     return reverse('detail', kwargs={'workspace_id': self.id})
 
 
+class Comment(models.Model):
+    # task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default="")
+    text = models.TextField(max_length=500)
+    posted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.text} ({self.id})'

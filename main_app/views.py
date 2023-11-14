@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UpdateUserForm, UpdateProfileForm
-from .models import Workspace, Task
+from .models import Workspace, Task, Comment
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView, ListView
 from .forms import TaskForm
@@ -47,15 +47,6 @@ class WorkspaceUpdate(UpdateView):
 class WorkspaceDelete(DeleteView):
   model = Workspace
   success_url = '/workspaces/'
-
-
-
-
-
-
-
-
-
 
 
 def home(request):
@@ -103,10 +94,6 @@ def workspaces_detail(request, workspace_id):
 #   return render(request, 'cats/detail.html', {'cat': cat, 'feeding_form': feeding_form, 'toys':toys_cats_doesnt_have})
 
 
-
-
-
-
 class TaskList(ListView):
   model = Task
 
@@ -126,6 +113,7 @@ def add_tasks(request, workspace_id):
     add_tasks.workspace_id = workspace_id
     add_tasks.save()
   return redirect('detail', workspace_id=workspace_id)
+
 
 
 
@@ -151,3 +139,8 @@ def assoc_task(request, workspace_id, task_id):
 def unassoc_task(request, workspace_id, task_id):
   Workspace.objects.get(id=workspace_id).tasks.remove(task_id)
   return redirect('detail', workspace_id=workspace_id)
+
+
+class CommentCreate(CreateView):
+  model = Comment
+  fields = ['text']

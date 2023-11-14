@@ -30,7 +30,7 @@ class UpdateProfileForm(forms.ModelForm):
 
 
 class TaskForm(ModelForm):
-  class Meta: ##declare model that is being used
+  class Meta: 
     model = Task
     fields = ['name', 'description','duedate','status']
 

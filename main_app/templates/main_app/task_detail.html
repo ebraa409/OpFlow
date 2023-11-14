@@ -4,7 +4,7 @@
 {% block content %}
 
 
-<h1>{{task.name}}</h1>
+<h1>{{task.name}}</h1><br><p><a href="{% url 'comments_create' %}">Add Comment</a></p>
 
 <a href="{% url 'tasks_update' task.id %}">Edit Task</a>
 <a href="{% url 'tasks_delete' task.id %}">Delete Task</a>

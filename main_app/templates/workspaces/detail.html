@@ -17,13 +17,19 @@
 
 
 <table class="striped">
+  
   <thead>
-    <tr><th>task</th><th>description</th><th>duedate</th><th>status</th>
+    <tr>
+      <th>task</th>
+      <th>description</th>
+      <th>duedate</th>
+      <th>status</th>
   </thead>
   <tbody>
     {% for task in workspace.task_set.all %}
+    
       <tr>
-        <td>{{task.name}}</td>
+        <td><a href="{% url 'tasks_detail' task.id %}">{{task.name}}</a></td> 
         <td>{{task.description}}</td>
         <th>{{task.duedate}}</th>
         <th>{{task.status}}</th>   
@@ -32,11 +38,13 @@
   </tbody>
 </table>
 
+<hr>
 
 
 
 
 
+<hr>
 <form action="{% url 'add_tasks' workspace.id %}" method="POST">
   {% csrf_token %}
   <!-- Render the inputs -->

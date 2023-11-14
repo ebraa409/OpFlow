@@ -23,7 +23,7 @@ urlpatterns = [
   path('workspaces/<int:workspace_id>/add_tasks/', views.add_tasks, name='add_tasks'),
 
 
-  ## Tasks CRUDS
+  ## Tasks CUDS
   # path('tasks/<int:workspace_id>/create/', views.TaskCreate.as_view(), name='tasks_create'),
 
   path('tasks/<int:pk>/update/', views.TaskUpdate.as_view(), name='tasks_update'),
@@ -34,5 +34,6 @@ urlpatterns = [
   path('workspaces/<int:workspace_id>/assoc_task/<int:task_id>/', views.assoc_task, name='assoc_task'),
   
   path('workspaces/<int:workspace_id>/unassoc_task/<int:task_id>/', views.unassoc_task, name='unassoc_task'),
-
+  ## Comment CUDS
+  path('comments/create', views.CommentCreate.as_view(), name='comments_create'),
 ]
