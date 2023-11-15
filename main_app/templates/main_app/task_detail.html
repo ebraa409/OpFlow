@@ -23,18 +23,21 @@
     </tr>
 </tbody>
 </table>
-
+{% if comment.user == request.user %}
 <a href="{% url 'tasks_update' task.id %}">Edit Task</a>
 <a href="{% url 'tasks_delete' task.id %}">Delete Task</a>
-
+{% endif %}
 <br>
 
 <div class="comment-box">
   <h2>Comments:</h2>
   <div>
     {% for comment in task.comment_set.all %}
-      <p>{{ comment.text }}</p> <a href="{% url 'comments_update' comment.id %}">Edit Comment</a>
+      <p>{{ comment.text }}</p>
+  {% if comment.user == request.user %}
+  <a href="{% url 'comments_update' comment.id %}">Edit Comment</a>
       <a href="{% url 'comments_delete' comment.id %}">Delete Comment</a>
+  {% endif %}
       <p>Posted at: {{ comment.posted_at }}</p>
       <p>By: {{ comment.user.username }}</p>
     {% endfor %}

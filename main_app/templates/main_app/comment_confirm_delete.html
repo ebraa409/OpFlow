@@ -2,15 +2,17 @@
 
 
 {% block content %}
-
-<h1>Delete Comment?</h1>
-
-<form action="" method="POST">
-{% csrf_token %}
-
-  <input type="submit" value="YES">
-  <a href="{% url 'tasks_detail' comment.task.id %}">Cancel</a>
+<div class="form5">
+  <h1>Delete Comment?</h1>
   
-</form>
+  <form class="form2" action="" method="POST">
+  {% csrf_token %}
+  
+    <input type="submit" value="YES">
+    <a href="{% url 'tasks_detail' comment.task.id %}">Cancel</a>
+    
+  </form>
+
+</div>
 
 {% endblock %}

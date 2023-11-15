@@ -46,9 +46,7 @@
 }
 
 .content-container {
-  height: 100vh;
-  padding: 1em 2em;
-  
+  height: 100vh;  
 }
 
 .workspace-container {
@@ -211,4 +209,44 @@ input[type="submit"]:hover {
   justify-content: center;
   align-items: center;
   width: 50%;
+}
+
+.comment-box {
+  margin: 0 auto;
+  background-color: rgb(230, 227, 227);
+  padding: 1em;
+  margin-top: 1em;
+}
+
+video {
+  width: 100%;
+}
+
+.index-title {
+  position: absolute;
+  height: calc(100% - 4em);
+  width: calc(100% - 4em) ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 1.8em;
+  background-color: rgba(0,0,0,0.5);
+  color: whitesmoke;
+  
+}
+
+.vid-sec {
+  position: relative;
+  padding: 2em;
+  overflow: hidden;
+}
+
+.form5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  gap: 5em;
 }

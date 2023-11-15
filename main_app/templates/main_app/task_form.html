@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div class="form5">
 {% if object %}
 <h1>Edit <span class="teal-text">{{object.name}}</span></h1>
 {% else %}
+
+
 <h1>Add Task</h1>
 {% endif %}
 
-<form class="form1" action="" method="post">
+<form action="" method="post">
   {% csrf_token %}
   <input type="hidden" name="workspace_id" value="{{ workspace.id }}">
   <table>
@@ -16,6 +18,7 @@
   </table>
   <input type="submit" value="Submit!">
 </form>
+</div>
 
 
 {% endblock %}
