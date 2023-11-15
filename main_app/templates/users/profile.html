@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="row my-3 p-3">
-     
-
 
 
     </div>
@@ -13,9 +11,11 @@
                     <strong>{{ value }}</strong>
                 {% endfor %}
             </div>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
+            <script>
+                console.log(user_form.errors)
+            </script>
         </div>
     {% endif %}
     <div class="form-content">
