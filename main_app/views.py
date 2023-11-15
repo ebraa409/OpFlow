@@ -72,8 +72,6 @@ def profile(request):
     user_form = UpdateUserForm(instance=request.user)
     profile_form = UpdateProfileForm(instance=request.user.profile)
     
-  print("user_form")
-  # print(user_form.error_message)
 
   return render(request, 'users/profile.html', {'user_form': user_form, 'profile_form': profile_form})
 
@@ -88,9 +86,6 @@ def workspaces_detail(request, workspace_id):
   workspace = Workspace.objects.get(id =workspace_id)
   task_form = TaskForm()
   return render(request, 'workspaces/detail.html', {'workspace': workspace, 'task_form':task_form})
-
-
-
 
 
 

@@ -2,16 +2,30 @@
 
 
 {% block content %}
+<div class="workspace-container">
 
-<div>
+  <h1 class="workspace-title">My Workspaces</h1>
+  <div class="container">
+    <div class="row">
+  
+      <div class="col-11 cardcont">
+  
+        {% for workspace in workspaces %}
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{ workspace.name }}</h5>
+              <p class="card-text">{{workspace.description}}</p>
+              <a href="{% url 'detail' workspace.id %}">
+              <button type="button" class="btn btn-primary">View Workspace</button>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 </div>
 
-{% for workspace in workspaces %}
-<div>
-    <a href="{% url 'detail' workspace.id %}">
-    <span>{{ workspace.name }}</span>
-    </a>
-    <p>Description: {{ workspace.description }}</p>
-  </div>
-{% endfor %}
+
 {% endblock %}
+

@@ -14,33 +14,14 @@
 
 <hr>
 
-<!-- <table class="table">
-  <thead>
-    ...
-  </thead>
-  <tbody>
-    <tr class="table-active">
-      ...
-    </tr>
-    <tr>
-      ...
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2" class="table-active">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table> -->
-{% if task %}
 <table class="table table-striped table-hover">
   
   <thead>
     <tr class="table-active">
-      <th>task</th>
-      <th>description</th>
-      <th>duedate</th>
-      <th>status</th>
+      <th>Task</th>
+      <th>Description</th>
+      <th>Due Date</th>
+      <th>Status</th>
   </thead>
   <tbody>
     {% for task in workspace.task_set.all %}
@@ -54,9 +35,6 @@
     {% endfor %}
   </tbody>
 </table>
-{% else %}
-<h4>No Tasks</h4>
-{% endif %}
 
 
 
