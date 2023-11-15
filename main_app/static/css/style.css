@@ -59,6 +59,11 @@
   background-size: cover;
 }
 
+.workspaced {
+  background-image: url('../uploads/Untitled.png');
+  background-size: cover;
+}
+
 .footer {
   height: 20px;
   text-align: center;
@@ -215,7 +220,7 @@ input[type="submit"]:hover {
   margin: 0 auto;
   background-color: rgb(230, 227, 227);
   padding: 1em;
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
 video {
@@ -249,4 +254,39 @@ video {
   width: 100%;
   flex-direction: column;
   gap: 5em;
+}
+
+.opflow-content {
+  text-align: center;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.card-heading {
+    color: #007BFF;
+    margin-bottom: 20px;
+}
+
+.about-us,
+.features {
+    margin-bottom: 30px;
+}
+
+.features h3 {
+    color: #007BFF;
+    margin-top: 10px;
+}
+
+.about-us p,
+.features p {
+    line-height: 1.6;
+}
+
+.hp-title {
+font-size: 100px;
+}
+
+.task-anc {
+  padding: 2em;
 }

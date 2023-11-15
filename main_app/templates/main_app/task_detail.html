@@ -23,10 +23,8 @@
     </tr>
 </tbody>
 </table>
-{% if comment.user == request.user %}
-<a href="{% url 'tasks_update' task.id %}">Edit Task</a>
-<a href="{% url 'tasks_delete' task.id %}">Delete Task</a>
-{% endif %}
+<a class="task-anc" href="{% url 'tasks_update' task.id %}">Edit Task</a>
+<a class="task-anc" href="{% url 'tasks_delete' task.id %}">Delete Task</a>
 <br>
 
 <div class="comment-box">

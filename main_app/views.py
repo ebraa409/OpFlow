@@ -88,28 +88,12 @@ def workspaces_detail(request, workspace_id):
   return render(request, 'workspaces/detail.html', {'workspace': workspace, 'task_form':task_form})
 
 
-
-# def cats_detail(request, cat_id):
-#   #Select * FROM 'main_app_cat' WHERE id = cat_id
-#   cat = Cat.objects.get(id=cat_id)
-#   feeding_form = FeedingForm()
-#   ## Exclude those ids which exist in cat_toys join table with the current cat id
-#   toys_cats_doesnt_have = Toy.objects.exclude(id__in = cat.toys.all().values_list('id'))
-#   return render(request, 'cats/detail.html', {'cat': cat, 'feeding_form': feeding_form, 'toys':toys_cats_doesnt_have})
-
-
 class TaskList(LoginRequiredMixin, ListView):
   model = Task
 
 class TaskDetail(LoginRequiredMixin, DetailView):
   model = Task
   
-  
-
-# class TaskCreate(CreateView):
-#   model = Task
-#   fields = ['name', 'description', 'duedate', 'status' ]
-
 @login_required
 def add_tasks(request, workspace_id):
   form = TaskForm(request.POST)
@@ -119,13 +103,7 @@ def add_tasks(request, workspace_id):
     add_tasks.save()
   return redirect('detail', workspace_id=workspace_id)
 
-# def add_comments(request, task_id):
-#   form = TaskForm(request.POST)
-#   if form.is_valid():
-#     add_comments = form.save(commit=False)
-#     add_comments.task_id = task_id
-#     add_comments.save()
-#   return redirect('tasks_detail', task_id=task_id)
+
 
 @login_required
 def add_comment(request, task_id):
@@ -144,15 +122,6 @@ def add_comment(request, task_id):
   return render(request, 'main_app/comment_form.html', context)
 
 
-
-
-
-
-  # def form_valid(self, form):
-  #   workspace_id = self.kwargs['workspace_id']
-  #   form.instance.workspace = Workspace.objects.get(id=self.kwargs['workspace_id'])
-  #   return super().form_valid(form)
-
 class TaskUpdate(LoginRequiredMixin, UpdateView):
   model = Task
   fields = ['name', 'description', 'duedate', 'status' ]
@@ -160,16 +129,6 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
 class TaskDelete(LoginRequiredMixin, DeleteView):
   model = Task
   success_url = '/tasks/'
-
-
-def assoc_task(request, workspace_id, task_id):
-  Workspace.objects.get(id=workspace_id).tasks.add(task_id)
-  return redirect('detail', workspace_id=workspace_id)
-
-  
-def unassoc_task(request, workspace_id, task_id):
-  Workspace.objects.get(id=workspace_id).tasks.remove(task_id)
-  return redirect('detail', workspace_id=workspace_id)
 
 class CommentUpdate(LoginRequiredMixin, UpdateView):
   model = Comment
@@ -179,15 +138,3 @@ class CommentDelete(LoginRequiredMixin, DeleteView):
   model = Comment
   fields = ['text']
   success_url = '/tasks'
-
-# class CommentCreate(CreateView):
-#   model = Comment
-#   fields = ['text']
-#   success_url = '/tasks/'
-
-#   def form_valid(self, form):
-#     form.instance.user = self.request.user
-#     form.instance.task_id = self.request.POST.get('task')
-
-#     return super().form_valid(form)
-  

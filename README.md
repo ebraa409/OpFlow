@@ -1,24 +1,38 @@
+
 # OpFlow
 
-OpFlow is a task management website where users are able to optimize their workflow with maximum efficiency
-
-# Getting Started
+OpFlow is a task management website designed for social media agencies where users are able to optimize their workflow with maximum efficiency
 
 ## Trello Board
 
 [Trello Board](https://trello.com/b/sQJQAVO5/opflow)
 
-## Entity Relationship Diagram
-![ERD](https://i.imgur.com/aCdHYgA.png)
+## Technologies Used:
+* Python/Django
+## Home Page
 
-OpFlow consists of 4 models; 
+The home page simply displayed a video with the name of the website. Additionally, it contains information about the website and its features.
 
-* User
-* Task
-* Workspace
-* Comments
+![HomePage](https://i.imgur.com/3Bid3O1.png)
+
+## Workspaces
+
+Workspaces page allows you to view all of the "client folders" you have created, organizing your desk efficiently!
+
+## Creating Tasks
+
+In a specific workspace, users are able to create tasks in order to be on top of your to do list effortlessly!
+
+![Tasks](https://i.imgur.com/ms9ZuRj.png)
+
+## Commenting on Tasks
+
+users are able to comment on specific tasks to provide feedback, and or communicate with other users who share the same workspaces.
 
 
-## Wireframes
-![Wireframes](https://i.imgur.com/FI0dfZv.png)
+## Future Enhancements
 
+* Assigning tasks to other users
+* Additional Styling
+* Additional fields for signup
+* Associate Task as complete

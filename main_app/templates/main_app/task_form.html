@@ -1,23 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="form5">
-{% if object %}
-<h1>Edit <span class="teal-text">{{object.name}}</span></h1>
-{% else %}
+<div>
+  <div class="form5">
+  {% if object %}
+  <h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+  {% else %}
+  
+  
+  <h1>Add Task</h1>
+  {% endif %}
+  
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="workspace_id" value="{{ workspace.id }}">
+    <table>
+      {{form.as_table}}
+    </table>
+    <input type="submit" value="Submit!">
+  </form>
+  </div>
 
-
-<h1>Add Task</h1>
-{% endif %}
-
-<form action="" method="post">
-  {% csrf_token %}
-  <input type="hidden" name="workspace_id" value="{{ workspace.id }}">
-  <table>
-    {{form.as_table}}
-  </table>
-  <input type="submit" value="Submit!">
-</form>
 </div>
 
 

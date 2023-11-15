@@ -6,12 +6,10 @@
 
     <h2>{{workspace.name }}</h2>
     <p>{{ workspace.description }}</p>
-  {% if comment.user == request.user %}
     <div>
       <a href="{% url 'workspaces_update' workspace.id %}">Edit Workspace</a>
       <a href="{% url 'workspaces_delete' workspace.id %}">Delete Workspace</a>
     </div>
-  {% endif %}
   
   <hr>
   
@@ -53,7 +51,6 @@
       <div class="card card-body3" style="width: 400px;">
         <form class="form1" action="{% url 'add_tasks' workspace.id %}" method="POST">
           {% csrf_token %}
-          <!-- Render the inputs -->
           {{ task_form.as_p }}
           <button type="submit" class="btn btn-primary">Create</button>
   
