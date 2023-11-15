@@ -49,8 +49,8 @@
 </p>
 <div style="min-height: 120px;">
   <div class="collapse collapse-horizontal" id="collapseWidthExample">
-    <div class="card card-body" style="width: 400px;">
-      <form action="{% url 'add_tasks' workspace.id %}" method="POST">
+    <div class="card card-body3" style="width: 400px;">
+      <form class="form1" action="{% url 'add_tasks' workspace.id %}" method="POST">
         {% csrf_token %}
         <!-- Render the inputs -->
         {{ task_form.as_p }}

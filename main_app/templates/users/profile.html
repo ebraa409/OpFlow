@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+<h1 style="text-align: center;">Welcome {{user.username}}</h1>
     <div class="row my-3 p-3">
-
 
     </div>
     {% if user_form.errors %}
@@ -16,7 +16,7 @@
         </div>
     {% endif %}
     <div class="form-content">
-        <form method="post" enctype="multipart/form-data">
+        <form class="profile" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-row">
                 <div class="col-md-5">

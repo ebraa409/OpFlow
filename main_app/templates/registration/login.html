@@ -2,12 +2,17 @@
 
 {% block content %}
 
-<h1>Sign In</h1>
+<h1 class="signin-heading">Sign In</h1>
 
-<form action="{% url 'login' %}" method="POST">
-{% csrf_token %}
-{{form.as_p }}
-<input type="submit" value="login">
-</form>
+<div style="min-height: 120px;">
+  <div class="card card-body" style="width: 500px;">
+    <form class="form1" action="{% url 'login' %}" method="POST">
+      {% csrf_token %}
+      {{form.as_p }}
+      <input type="submit" value="login">
+      </form>
+  </div>
+</div>
 
 {% endblock %}
+

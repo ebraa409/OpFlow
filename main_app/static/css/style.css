@@ -1,60 +1,7 @@
-/* 
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  color: #333;
-}
-
-form {
-  max-width: 400px;
-  margin: 20px auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-form input[type="text"],
-form input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-form input[type="submit"] {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-form input[type="submit"]:hover {
-  background-color: #45a049;
-}
-
-p {
-  color: #d9534f;
-}
-
-.btn-primary{
-  --bs-btn-bg: green !important;
-} */
 
 #collapseWidthExample{
   margin: 20px;
 }
-
-
 
 
 .container {
@@ -99,8 +46,8 @@ p {
 }
 
 .content-container {
-  /* padding: 150px; */
   height: 100vh;
+  padding: 1em 2em;
   
 }
 
@@ -117,4 +64,151 @@ p {
 .footer {
   height: 20px;
   text-align: center;
+}
+
+
+.workplace-form {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  background-image: url('../uploads/Untitled.png');
+  background-size: cover;
+  gap: 5em;
+  color: whitesmoke;
+}
+
+
+div[style="min-height: 120px;"] {
+  min-height: 120px;
+}
+
+
+.card.card-body {
+  width: 250px;
+  height: 50%;
+  padding: 20px;
+  margin: 0 auto; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border-radius: 8px;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+label {
+  margin-bottom: 8px;
+}
+
+input {
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+
+input[type="submit"] {
+  background-color: #007BFF; 
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+
+input[type="submit"]:hover {
+  background-color: #0056b3; 
+}
+
+
+
+.signup-parent {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.form1 > p {
+  display: flex;
+  flex-direction: column;
+}
+
+.form2 > p {
+  display: flex;
+  flex-direction: column;
+  width: 150%;
+}
+
+.form2 > input[type="submit"] {
+  width: 150px;
+}
+
+.form2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card.card-body2 {
+  width: 250px;
+  height: 100%;
+  padding: 20px;
+  margin: 0 auto; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border-radius: 8px;
+}
+
+.form3 td>input {
+  width: 100%;
+}
+
+.workspace-form {
+  gap: 200px;
+}
+
+.comment-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  gap: 5em;
+}
+
+.card.card-body3 {
+  width: 250px;
+  height: 100%;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border-radius: 8px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 2em;
+}
+
+.form-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
 }

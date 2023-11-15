@@ -8,11 +8,19 @@
 {% if error_message %}
 <p>{{ error_message }}</p>
 {% endif %}
-<form action="{% url 'signup' %}" method="POST">
-{% csrf_token %}
-{{form.as_p}}
-<input type="submit" value="signup">
-</form>
+<div class="signup-parent" style="min-height: 120px;">
+    <div class="card card-body" style="width: 500px;">
+      <form class="form1" action="{% url 'signup' %}" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Signup">
+        </form>
+    </div>
+</div>
+
 
 {% endblock %}
+
+
+
 
