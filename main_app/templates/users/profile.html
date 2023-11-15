@@ -13,9 +13,6 @@
             </div>
                 <span aria-hidden="true">&times;</span>
             </button>
-            <script>
-                console.log(user_form.errors)
-            </script>
         </div>
     {% endif %}
     <div class="form-content">
@@ -34,12 +31,18 @@
                         <a href="#">Change Password</a>
                         <hr>
                         <label class="small mb-1">Change Avatar:</label>
-                        {{ profile_form.image|cut:'main_app/static/' }}
+                        {{ profile_form.image }}
                     </div>
+                    <label class="small mb-1">Email Address:</label> {{ user_form.email}}
                     <label class="small mb-1">First Name:</label> {{ profile_form.first_name}}
                     <label class="small mb-1">Last Name:</label> {{ profile_form.last_name}}
                 </div>
             </div>
+
+            <!-- <div>
+                {{user_form.as_p}}
+            </div> -->
+
             <br><br>
             <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
             <button type="reset" class="btn btn-dark btn-lg">Reset</button>

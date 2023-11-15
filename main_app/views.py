@@ -3,7 +3,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import UpdateUserForm, UpdateProfileForm
+from .forms import UpdateUserForm
+from .forms import UpdateProfileForm
 from .models import Workspace, Task, Comment
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView, ListView
@@ -60,6 +61,7 @@ def profile(request):
   if request.method == 'POST':
     user_form = UpdateUserForm(request.POST, instance=request.user)
     profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+    
 
     if user_form.is_valid() and profile_form.is_valid():
       user_form.save()
@@ -69,6 +71,9 @@ def profile(request):
   else:
     user_form = UpdateUserForm(instance=request.user)
     profile_form = UpdateProfileForm(instance=request.user.profile)
+    
+  print("user_form")
+  # print(user_form.error_message)
 
   return render(request, 'users/profile.html', {'user_form': user_form, 'profile_form': profile_form})
 

@@ -17,6 +17,7 @@ class UpdateUserForm(forms.ModelForm):
 
 
 class UpdateProfileForm(forms.ModelForm):
+  model = Profile
   first_name = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
 
   last_name = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
