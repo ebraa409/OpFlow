@@ -36,3 +36,11 @@ users are able to comment on specific tasks to provide feedback, and or communic
 * Additional Styling
 * Additional fields for signup
 * Associate Task as complete
+
+
+## Credits 
+
+* [User Profile](https://dev.to/earthcomfy/django-user-profile-3hik)
+* [Bootstrap](https://getbootstrap.com/docs/5.3/forms/overview/)
+* [CSS](https://www.w3schools.com/css/)
+
